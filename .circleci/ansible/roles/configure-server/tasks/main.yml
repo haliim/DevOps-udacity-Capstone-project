@@ -1,0 +1,32 @@
+---
+  - name: Print IP Address
+    shell:  "dig +short myip.opendns.com @resolver1.opendns.com."
+    register: print_result
+
+  #show the output on the user/us Cli
+  - name: print message
+    debug:
+      msg: "{{ print_result.stdout_lines }}"
+
+  - name: "update apt packages."
+    become: yes
+    apt:
+      update_cache: yes
+
+  - name: "upgrade packages"
+    become: yes
+    apt:
+      upgrade: yes
+
+  - name: "remove dependencies that are no longer required"
+    become: yes
+    apt:
+      autoremove: yes
+
+  - name: "install nginx"
+    become: yes
+    apt:
+      name: ["nginx"]
+      state: latest
+      update_cache: yes
+
