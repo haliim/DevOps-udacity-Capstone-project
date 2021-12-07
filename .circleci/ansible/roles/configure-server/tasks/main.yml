@@ -29,8 +29,9 @@
 
   - name: "Deploy Kubernetes Cluster"
     become: yes
-    become_user: bitnami
+    become_user: root
     shell: |
+      cd /home/bitnami
       sudo kubectl create ns nginx
       sudo kubectl create -f nginx-deployment.yaml
       sudo kubectl create -f nginx-service.yaml
