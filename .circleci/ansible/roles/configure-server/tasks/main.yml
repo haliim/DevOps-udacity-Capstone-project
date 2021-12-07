@@ -18,23 +18,20 @@
     apt:
       upgrade: yes
 
-#  - name: "remove dependencies that are no longer required"
-#    become: yes
-#    apt:
-#      autoremove: yes
 
-- name: "Copy YAML Files"
-  become: yes
-  become_user: bitnami
-  copy:
-    src: nginx-deployment.yaml
-    dest: /home/bitnami/
+
+  - name: "Copy YAML Files"
+    become: yes
+    become_user: bitnami
+    copy:
+      src: nginx-deployment.yaml
+      dest: /home/bitnami/
     
-- name: "Copy YAML Files 2"
-  become: yes
-  become_user: bitnami
-  copy:
-    src: nginx-service.yaml
-    dest: /home/bitnami/
-    owner: bitnami
+  - name: "Copy YAML Files 2"
+    become: yes
+    become_user: bitnami
+    copy:
+      src: nginx-service.yaml
+      dest: /home/bitnami/
+      owner: bitnami
 
