@@ -22,16 +22,23 @@
 
   - name: "Copy YAML Files"
     become: yes
-#    become_user: bitnami
+    become_user: bitnami
     copy:
       src: nginx-deployment.yaml
       dest: /home/bitnami/
     
   - name: "Copy YAML Files 2"
     become: yes
-#    become_user: bitnami
+    become_user: bitnami
     copy:
       src: nginx-service.yaml
       dest: /home/bitnami/
       owner: bitnami
 
+  - name: "Deploy - creating log files and directories"
+    become: yes
+    become_user: root
+    shell: |
+      echo "hi"
+      cd /home/bitnami
+      sudo touch file.txt
