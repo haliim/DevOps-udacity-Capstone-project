@@ -35,7 +35,9 @@ jobs:
   Build-Docker-Images:
     docker:
       - image: docker:17.05.0-ce-git
-
+        auth:
+          username: halim93
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run:
