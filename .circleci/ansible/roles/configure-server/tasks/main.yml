@@ -31,7 +31,7 @@
     dest: /home/bitnami
     owner: bitnami
     
-- name: "Copy YAML Files"
+- name: "Copy YAML Files 2"
   become: yes
   become_user: bitnami
   copy:
