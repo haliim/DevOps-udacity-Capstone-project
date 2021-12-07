@@ -48,7 +48,7 @@ jobs:
                   --template-file .circleci/files/Kub-Env.yml \
                   --stack-name "Kub-Env-${CIRCLE_WORKFLOW_ID:0:7}" \
                   --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  \
-#                  --tags project=UdacityCapstoneProject
+                  --tags project=UdacityCapstoneProject
                   
               
       - run:
@@ -66,7 +66,7 @@ jobs:
                   --output text >> .circleci/ansible/inventory.txt
               backendip=$(aws ec2 describe-instances \
                 --query "Reservations[*].Instances[*].PublicIpAddress" \
-                --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
+                --filters "Name=tag:Name,Values=Kub-Env-${CIRCLE_WORKFLOW_ID:0:7}" \
                 --output=text)
 #              curl -H "Content-Type: text/plain" -H "token: 44dcdd32-1ac6-4124-852c-6e4a6ed19cc6" --request PUT --data "$backendip" https://api.memstash.io/values/udapeople
       - persist_to_workspace:
@@ -75,9 +75,42 @@ jobs:
             - project/.circleci/ansible/inventory.txt
       # Here's where you will add some code to rollback on failure  
 
+  configure-infrastructure:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "2d:0a:88:cc:e4:44:e5:b1:c9:66:c1:de:76:9d:2e:90"
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update tar gzip ansible curl
+            pip install awscli
+      - run:
+          name: Set up inventory file
+          command: |
+            cd .circleci/ansible
+            URLS=$(curl -H "token: 44dcdd32-1ac6-4124-852c-6e4a6ed19cc6" --request GET https://api.memstash.io/values/udapeople)
+            echo "$URLS" >> inventory.txt
+            cat inventory.txt
+        
+      - run:
+          name: Configure server with ansible
+          no_output_timeout: 30m
+          command: |
+            cd .circleci/ansible
+            ansible-playbook -i inventory.txt configure-server.yml
+            cat inventory.txt
+        
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   Kubernetes:
     jobs:
       - deploy-infrastructure
+      - configure-infrastructure

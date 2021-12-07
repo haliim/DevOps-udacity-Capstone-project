@@ -23,10 +23,19 @@
     apt:
       autoremove: yes
 
-  - name: "install nginx"
-    become: yes
-    apt:
-      name: ["nginx"]
-      state: latest
-      update_cache: yes
+- name: "Copy YAML Files"
+  become: yes
+  become_user: bitnami
+  copy:
+    src: nginx-deployment.yaml
+    dest: /home/bitnami
+    owner: bitnami
+    
+- name: "Copy YAML Files"
+  become: yes
+  become_user: bitnami
+  copy:
+    src: nginx-service.yaml
+    dest: /home/bitnami
+    owner: bitnami
 
