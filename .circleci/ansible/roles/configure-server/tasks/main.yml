@@ -16,14 +16,14 @@
     become: yes
     become_user: bitnami
     copy:
-      src: mywebsite-deployment.yaml
+      src: web-deployment.yaml
       dest: /home/bitnami/
     
   - name: "Copy YAML Files 2"
     become: yes
     become_user: bitnami
     copy:
-      src: mywebsite-service.yaml
+      src: web-service.yaml
       dest: /home/bitnami/
       owner: bitnami
 
@@ -37,8 +37,8 @@
     shell: |
       cd /home/bitnami
       sudo kubectl create ns mywebsite
-      sudo kubectl create -f mywebsite-deployment.yaml
-      sudo kubectl create -f mywebsite-service.yaml
+      sudo kubectl create -f web-deployment.yaml
+      sudo kubectl create -f web-service.yaml
       sudo kubectl get deployment -n mywebsite
       sudo kubectl get pods -n mywebsite
       sudo kubectl get svc -n mywebsite
