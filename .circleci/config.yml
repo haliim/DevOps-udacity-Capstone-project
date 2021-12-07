@@ -128,7 +128,7 @@ workflows:
   Kubernetes:
     jobs:
       - Build-Docker-Images
-      - deploy-infrastructure
+      - deploy-infrastructure:
           requires: [Build-Docker-Images]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
