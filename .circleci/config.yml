@@ -34,7 +34,7 @@ jobs:
           
   Build-Docker-Images:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:latest
         auth:
           username: halim93
           password: $DOCKERHUB_PASSWORD
@@ -44,7 +44,7 @@ jobs:
           name: Build Docker Image
           command: |
               echo "Docker ID and Image: halim93/udacity-capstone-project"
-              docker login -u halim93 -p 896cf8ce-c977-4196-9916-5819037bb110
+              docker login -u halim93 -p $DOCKERHUB_PASSWORD
               docker build --tag=halim93/udacity-capstone-project:latest .
               docker push halim93/udacity-capstone-project:latest
       
