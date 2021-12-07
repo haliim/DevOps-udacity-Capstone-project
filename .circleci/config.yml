@@ -34,7 +34,7 @@ jobs:
           
   Build-Docker-Images:
     docker:
-      - image: circleci/docker-gc:2.0.486-aa277a8
+      - image: circleci/go:latest
     steps:
       - checkout
       - run:
