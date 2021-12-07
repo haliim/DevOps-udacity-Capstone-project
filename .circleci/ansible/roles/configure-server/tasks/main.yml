@@ -36,9 +36,12 @@
     become_user: root
     shell: |
       cd /home/bitnami
-      sudo kubectl create ns nginx
-      sudo kubectl create -f nginx-deployment.yaml
-      sudo kubectl create -f nginx-service.yaml
-      sudo kubectl get deployment -n nginx
-      sudo kubectl get pods -n nginx
-      sudo kubectl get svc -n nginx
+      sudo kubectl create ns mywebsite
+      sudo kubectl create -f mywebsite-deployment.yaml
+      sudo kubectl create -f mywebsite-service.yaml
+      sudo kubectl get deployment -n mywebsite
+      sudo kubectl get pods -n mywebsite
+      sudo kubectl get svc -n mywebsite
+      
+      
+      

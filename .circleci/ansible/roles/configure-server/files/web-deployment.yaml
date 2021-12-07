@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebsite-deployment
+  namespace: mywebsite
+  labels:
+    app: mywebsite
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mywebsite
+  template:
+    metadata:
+      labels:
+        app: mywebsite
+    spec:
+      containers:
+      - name: mywebsite
+        image: halim93/udacity-capstone-project:latest
+        ports:
+        - containerPort: 80
+        

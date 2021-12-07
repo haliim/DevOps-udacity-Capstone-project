@@ -32,6 +32,20 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
           
+  Build-Docker-Images:
+    docker:
+      - image: circleci/docker-gc:2.0.486-aa277a8
+    steps:
+      - checkout
+      - run:
+          name: Build Docker Image
+          command: |
+              echo "Docker ID and Image: halim93/udacity-capstone-project"
+              docker build --tag=halim93/udacity-capstone-project:latest .
+              docker push halim93/udacity-capstone-project:latest
+      
+      
+      
   deploy-infrastructure:
     docker:
       - image: amazon/aws-cli:2.3.2
@@ -113,6 +127,8 @@ jobs:
 workflows:
   Kubernetes:
     jobs:
+      - Build-Docker-Images
       - deploy-infrastructure
+          requires: [Build-Docker-Images]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
