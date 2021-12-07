@@ -36,5 +36,3 @@ Step 5: Test your pipeline
 - Verify that your pipeline works as you designed it. (Done), You can check the circleci passed badge at the begining of the README file.
 -Take a screenshot of the Circle CI showing deployment (Done), and a screenshot of your AWS EC2 page showing the newly created (for blue/green) instances. Make sure you name your instances differently between blue and green deployments. (Done)
 
-http://3.83.243.34:31234/
-
