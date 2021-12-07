@@ -197,9 +197,9 @@ workflows:
       - Lint
       - Build-Docker-Images:
           requires: [Lint]
-      - deploy-infrastructure:
-          requires: [Build-Docker-Images]
-      - configure-infrastructure:
-          requires: [deploy-infrastructure]
-      - cleanup:
-          requires: [configure-infrastructure]
+#      - deploy-infrastructure:
+#          requires: [Build-Docker-Images]
+#      - configure-infrastructure:
+#          requires: [deploy-infrastructure]
+#      - cleanup:
+#          requires: [configure-infrastructure]
