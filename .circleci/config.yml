@@ -32,6 +32,26 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
           
+  Lint:
+    docker:
+      - image: python:3.7.3-stretch
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: |
+              python3 -m venv venv
+              . venv/bin/activate
+              pip install hadolintw
+              pip install pylint
+              #install hadolint
+              wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+              chmod +x /bin/hadolint
+      - run:
+          name: lint Docker file
+          command: |
+              hadolint Dockerfile
+            
   Build-Docker-Images:
     docker:
       - image: docker:17.05.0-ce-git
@@ -130,12 +150,16 @@ jobs:
             cat inventory.txt
         
 
+            
+            
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   Kubernetes:
     jobs:
-      - Build-Docker-Images
+      - Lint
+      - Build-Docker-Images:
+          requires: [Lint]
       - deploy-infrastructure:
           requires: [Build-Docker-Images]
       - configure-infrastructure:
