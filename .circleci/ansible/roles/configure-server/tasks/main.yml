@@ -29,8 +29,6 @@
   copy:
     src: nginx-deployment.yaml
     dest: /home/bitnami/
-    remote_src: yes
-    owner: bitnami
     
 - name: "Copy YAML Files 2"
   become: yes
