@@ -48,3 +48,4 @@ How the Cluster is deployed:
 - Then, I created a service and exposed the deployment to port 31234 to be accessible from the internet.
 - these configuration has been pushed by ansible and the creation of the EC2 and associated resourced are automatically deployed using CloudFormation.
 - I've created a docker image from nginx and hosted my portfolio in it.
+
