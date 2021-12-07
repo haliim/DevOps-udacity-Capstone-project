@@ -103,6 +103,7 @@ jobs:
           no_output_timeout: 30m
           command: |
             cd .circleci/ansible
+            cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
             cat inventory.txt
         
