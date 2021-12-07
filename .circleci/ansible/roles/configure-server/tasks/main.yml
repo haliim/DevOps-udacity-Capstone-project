@@ -8,15 +8,7 @@
     debug:
       msg: "{{ print_result.stdout_lines }}"
 
-  - name: "update apt packages."
-    become: yes
-    apt:
-      update_cache: yes
 
-  - name: "upgrade packages"
-    become: yes
-    apt:
-      upgrade: yes
 
 
 
