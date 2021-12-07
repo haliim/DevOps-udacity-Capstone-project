@@ -39,6 +39,9 @@
     become: yes
     become_user: root
     shell: |
-      echo "hi"
-      cd /home/bitnami
-      sudo touch file.txt
+      sudo kubectl create ns nginx
+      sudo kubectl create -f nginx-deployment.yaml
+      sudo kubectl create -f nginx-service.yaml
+      sudo kubectl get deployment -n nginx
+      sudo kubectl get pods -n nginx
+      sudo kubectl get svc -n nginx
