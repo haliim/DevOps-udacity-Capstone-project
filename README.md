@@ -3,8 +3,8 @@
 [![CircleCI](https://circleci.com/gh/haliim/DevOps-udacity-Capstone-project/tree/main.svg?style=svg)](https://circleci.com/gh/haliim/DevOps-udacity-Capstone-project/tree/main)
 
 Note: You can find the website IP in the configure-infrastructure job in the last run (configure server with ansible)
-http://IP:31234
-http://3.83.147.73:31234/
+
+http://54.209.54.86:31234/
 
 Step 1:Propose and Scope the Project
 --------------------------------------
