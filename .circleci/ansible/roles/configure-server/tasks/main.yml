@@ -25,13 +25,13 @@
     become_user: bitnami
     copy:
       src: nginx-deployment.yaml
-      dest: /home/bitnami/
+      dest: /var
     
   - name: "Copy YAML Files 2"
     become: yes
     become_user: bitnami
     copy:
       src: nginx-service.yaml
-      dest: /home/bitnami/
+      dest: ~/
       owner: bitnami
 
