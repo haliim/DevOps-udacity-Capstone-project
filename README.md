@@ -28,13 +28,13 @@ Step 4: Build your pipeline
 - Set up all the steps that your pipeline will include. (Done)
 - Configure a deployment pipeline. (Done)
 - Include your Dockerfile/source code in the Git repository.(Done)
-- Docker Lint and screenshot attached in a folder called screenshots. XXXXXXXXXXXXXXXXXXXXXXXXXX
+- Docker Lint and screenshot attached in a folder called screenshots. (Done)
 
 Step 5: Test your pipeline
 ---------------------------
 - Perform builds on your pipeline.  (Done)
 - Verify that your pipeline works as you designed it. (Done), You can check the circleci passed badge at the begining of the README file.
--XXXXXXXXXXXXxx Take a screenshot of the Circle CI or Jenkins pipeline showing deployment, and a screenshot of your AWS EC2 page showing the newly created (for blue/green) or modified (for rolling) instances. Make sure you name your instances differently between blue and green deployments.
+-Take a screenshot of the Circle CI showing deployment (Done), and a screenshot of your AWS EC2 page showing the newly created (for blue/green) instances. Make sure you name your instances differently between blue and green deployments. (Done)
 
 
 
