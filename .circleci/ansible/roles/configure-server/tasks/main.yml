@@ -35,9 +35,9 @@
       dest: /home/bitnami/
       owner: bitnami
 
-  - name: "Deploy - creating log files and directories"
+  - name: "Deploy Kubernetes Cluster"
     become: yes
-    become_user: root
+    become_user: bitnami
     shell: |
       sudo kubectl create ns nginx
       sudo kubectl create -f nginx-deployment.yaml
