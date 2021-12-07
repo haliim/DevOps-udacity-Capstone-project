@@ -38,15 +38,19 @@ jobs:
         auth:
           username: halim93
           password: $DOCKERHUB_PASSWORD
+    
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Build Docker Image
           command: |
+              ls
               echo "Docker ID and Image: halim93/udacity-capstone-project"
               docker login -u halim93 -p $DOCKERHUB_PASSWORD
               docker build --tag=halim93/udacity-capstone-project:latest .
               docker push halim93/udacity-capstone-project:latest
+              ls
       
       
       
