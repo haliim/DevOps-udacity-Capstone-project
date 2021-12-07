@@ -68,7 +68,7 @@ jobs:
                 --query "Reservations[*].Instances[*].PublicIpAddress" \
                 --filters "Name=tag:Name,Values=Kub-Env-${CIRCLE_WORKFLOW_ID:0:7}" \
                 --output=text)
-#              curl -H "Content-Type: text/plain" -H "token: 44dcdd32-1ac6-4124-852c-6e4a6ed19cc6" --request PUT --data "$backendip" https://api.memstash.io/values/udapeople
+              curl -H "Content-Type: text/plain" -H "token: 44dcdd32-1ac6-4124-852c-6e4a6ed19cc6" --request PUT --data "$backendip" https://api.memstash.io/values/udapeople
       - persist_to_workspace:
           root: ~/
           paths:
