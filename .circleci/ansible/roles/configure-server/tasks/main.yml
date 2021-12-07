@@ -18,10 +18,10 @@
     apt:
       upgrade: yes
 
-  - name: "remove dependencies that are no longer required"
-    become: yes
-    apt:
-      autoremove: yes
+#  - name: "remove dependencies that are no longer required"
+#    become: yes
+#    apt:
+#      autoremove: yes
 
 - name: "Copy YAML Files"
   become: yes
