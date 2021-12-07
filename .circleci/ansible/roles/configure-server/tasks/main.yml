@@ -27,6 +27,10 @@
       dest: /home/bitnami/
       owner: bitnami
 
+  - name: "Pause for 10 minutes to make sure that the machine is ready"
+    pause:
+      minutes: 10
+
   - name: "Deploy Kubernetes Cluster"
     become: yes
     become_user: root
