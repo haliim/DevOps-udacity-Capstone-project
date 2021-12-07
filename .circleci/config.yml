@@ -35,6 +35,9 @@ jobs:
   Build-Docker-Images:
     docker:
       - image: circleci/go:latest
+        auth:
+          username: halim93
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run:
