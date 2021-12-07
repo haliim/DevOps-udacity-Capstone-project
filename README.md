@@ -4,6 +4,7 @@
 
 Note: You can find the website IP in the configure-infrastructure job in the last run (configure server with ansible)
 http://IP:31234
+http://3.83.147.73:31234/
 
 Step 1:Propose and Scope the Project
 --------------------------------------
@@ -13,7 +14,7 @@ Step 1:Propose and Scope the Project
   3- Create a deployment for the app and expose it.
 - Circle CI will be used for CICD
 - Will rely on blue/green deployment
-- For the Docker application you can either use an application which you come up with, or use an open-source application pulled from the Internet, or if you have no idea, you can use an Nginx “Hello World, my name is (student name)” application.XXXXXXXXXXXXXXXXXXXXXXXXXX
+- For the Docker application you can either use an application which you come up with. (My personal portfolio)
 
 Step 2: Use Circle CI, and implement blue/green deployment
 ------------------------------------------------------------
@@ -38,3 +39,12 @@ Step 5: Test your pipeline
 - Perform builds on your pipeline.  (Done)
 - Verify that your pipeline works as you designed it. (Done), You can check the circleci passed badge at the begining of the README file.
 -Take a screenshot of the Circle CI showing deployment (Done), and a screenshot of your AWS EC2 page showing the newly created (for blue/green) instances. Make sure you name your instances differently between blue and green deployments. (Done)
+
+============
+
+How the Cluster is deployed:
+- I've used an EC2 AMI from the marketplace (Kubernetes by bitnami).
+- I've create a deployment using a yaml file (You can find it in files under .circleci web-deplyment.yaml).
+- Then, I created a service and exposed the deployment to port 31234 to be accessible from the internet.
+- these configuration has been pushed by ansible and the creation of the EC2 and associated resourced are automatically deployed using CloudFormation.
+- I've created a docker image from nginx and hosted my portfolio in it.
